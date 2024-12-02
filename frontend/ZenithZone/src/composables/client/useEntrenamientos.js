@@ -1,4 +1,4 @@
-import { ref, reactive } from 'vue';
+import { ref, reactive, watch, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import entrenamientosService from '@/services/client/entrenamientos.service';
 
@@ -18,6 +18,7 @@ export function useEntrenamientos() {
         deporteId: "",
         offset: 0,
         limit: 4,
+        diasSeleccionados: [],
     };
 
     const state = reactive({
@@ -35,7 +36,6 @@ export function useEntrenamientos() {
     };
 
     const fetchTotalPages = (filters, filters_limit) => {
-
         entrenamientosService.GetEntrenamientosTotalFiltered(filters)
             .then(res => {
                 const limit = filters_limit ?? 4;
@@ -72,9 +72,9 @@ export function useEntrenamientos() {
             deporteId: "",
             offset: 0,
             limit: 4,
+            diasSeleccionados: [],
         };
-        // ApplyFilters(state.filters);
-        router.push({ name: 'serviciosEntrenamientos' }); // Actualiza la URL sin parámetros de filtro
+        router.push({ name: 'serviciosEntrenamientos' });
         fetchEntrenamientos(state.filters);
         fetchTotalPages(state.filters, state.filters.limit);
     };
@@ -92,10 +92,29 @@ export function useEntrenamientos() {
         ApplyFilters(filters_url);
     };
 
+    // Watch for filter changes
+    watch(
+        () => state.filters,
+        (newFilters) => {
+            ApplyFilters(newFilters);
+        },
+        { deep: true }
+    );
+
     // Initial fetch
-    fetchEntrenamientos(filters_url);
-    fetchTotalPages(filters_url, filters_url.limit);
-    fetchEntrenamientosData();
+    onMounted(() => {
+        if (route.params.filters) {
+            const filters = JSON.parse(atob(route.params.filters));
+            state.filters = filters;
+            console.log(filters);
+            ApplyFilters(filters);
+            fetchTotalPages(filters, filters.limit);
+        } else {
+            fetchEntrenamientos(filters_url);
+            fetchTotalPages(filters_url, filters_url.limit);
+        }
+        fetchEntrenamientosData();
+    });
 
     return { state, filters_url, ApplyFilters, resetFilters, clickCallback };
 }

@@ -141,18 +141,20 @@ export default {
         };
 
         const deleteFilters = () => {
-            state.filters.nombre = "";
-            state.filters.dia = "";
-            state.filters.duracionMin = minDuracion.value;
-            state.filters.duracionMax = maxDuracion.value;
-            state.filters.maxPlazasMin = 0;
-            state.filters.maxPlazasMax = 0;
-            state.filters.precioMin = minPrice.value;
-            state.filters.precioMax = maxPrice.value;
-            state.filters.deporteId = "";
-            state.filters.offset = 0;
-            state.filters.limit = 4;
-            state.filters.diasSeleccionados = [];
+            state.filters = {
+                nombre: "",
+                dia: "",
+                duracionMin: minDuracion.value,
+                duracionMax: maxDuracion.value,
+                maxPlazasMin: 0,
+                maxPlazasMax: 0,
+                precioMin: minPrice.value,
+                precioMax: maxPrice.value,
+                deporteId: "",
+                offset: 0,
+                limit: 4,
+                diasSeleccionados: []
+            };
             emit('deleteFilters', state.filters);
         };
 

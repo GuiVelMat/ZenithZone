@@ -30,6 +30,7 @@ export default {
     },
 
     GetEntrenamientos(params) {
+        console.log(this.FormatFilters(params));
         return Api(secrets.URL_SPRING).get(`entrenamientos?${this.FormatFilters(params)}`);
     },
 
