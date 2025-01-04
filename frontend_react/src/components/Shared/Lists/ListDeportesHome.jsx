@@ -18,7 +18,7 @@ const ListDeportesHome = () => {
                 </div>
             </div>
             <div className="row justify-content-center">
-                {deportes.deportes.slice(0, 8).map((deporte) => (
+                {deportes.slice(0, 8).map((deporte) => (
                     <CardDeportes key={deporte.id} deporte={deporte} />
                 ))}
             </div>
