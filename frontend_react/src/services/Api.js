@@ -6,6 +6,7 @@ const Axios = (URL) => {
         timeout: 5000,
         headers: {
             'Content-Type': 'application/json',
+            'isSpringboot': 'true',
         },
     });
 
