@@ -7,7 +7,7 @@ export const EntrenamientoContextProvider = ({ children }) => {
     const [Entrenamientos, setEntrenamientos] = useState([]);
 
     useEffect(() => {
-        EntrenamientosService.GetAllEntrenamientos()
+        EntrenamientosService.GetEntrenamientosData()
             .then(({ data }) => {
                 setEntrenamientos(data);
                 // console.log(data);
