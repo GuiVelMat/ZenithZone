@@ -1,9 +1,13 @@
-import secrets from "../../secrets";
-import Api from "../api";
+import secrets from "../../secrets"
+import Api from "../Api"
 
 export default {
     GetPistas() {
         return Api(secrets.URL_SPRING).get('pistas');
+    },
+
+    GetOnePista(slug) {
+        return Api(secrets.URL_SPRING).get(`pistas/${slug}`);
     },
 
     GetPistasByDeporte(slug) {

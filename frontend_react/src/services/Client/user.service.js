@@ -1,21 +1,39 @@
+import Api from "../Api";
 import secrets from "../../secrets";
-import Api from "../api";
 
 export default {
-
+    // USER
     Register(data) {
-        return Api(secrets.URL_SPRING).post('register', data);
-    },//Register
+        return Api(secrets.URL_SPRING).post('users', data);
+    },
 
     Login(data) {
-        return Api(secrets.URL_SPRING).post('login', data);
-    },//Login
+        return Api(secrets.URL_SPRING).post('users/login', data);
+    },
 
-    Logout() {
-        return Api(secrets.URL_SPRING).post('logout');
-    },//Logout
+    UpdateUser() {
+        return Api(secrets.URL_SPRING).put('user');
+    },
 
-    Profile() {
-        return Api(secrets.URL_SPRING).get('profile');
-    },//Profile
+    CurrentUserProfile() {
+        return Api(secrets.URL_SPRING).get('user');
+    },
+
+    GetCurrentUser() {
+        return Api(secrets.URL_SPRING).get('user');
+    },
+
+    Refresh(refreshToken) {
+        return Api(secrets.URL_SPRING).post(`refresh`, refreshToken);
+    },
+
+    BlacklistToken(refreshToken) {
+        return Api(secrets.URL_SPRING).post(`logout`, refreshToken);
+    },
+
+    // ADMIN
+    GetCurrentAdmin() {
+        return Api(secrets.URL_SPRING, 'false').get('currentAdmin',);
+    },
+
 }//export
