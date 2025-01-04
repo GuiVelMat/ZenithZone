@@ -9,7 +9,7 @@ export const DeporteContextProvider = ({ children }) => {
     useEffect(() => {
         deportesService.GetDeportes()
             .then(({ data }) => {
-                setDeportes(data);
+                setDeportes(data.deportes);
                 // console.log(data);
             })
             .catch(e => console.error(e));

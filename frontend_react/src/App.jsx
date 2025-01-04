@@ -5,7 +5,7 @@ import './App.css';
 
 import { DeporteContextProvider } from './context/DeportesContext';
 import { PistaContextProvider } from './context/PistasContext';
-import { EntrenamientoContextProvider } from './context/EntrenamietosContext';
+import { EntrenamientoContextProvider } from './context/EntrenamientosContext';
 
 import Header from './components/Shared/Header/Header';
 import Footer from './components/Shared/Footer/Footer';
