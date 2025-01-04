@@ -4,18 +4,18 @@ import EntrenamientosService from "../services/Client/entrenamientos.service";
 const Context = React.createContext({})
 
 export const EntrenamientoContextProvider = ({ children }) => {
-    const [Entrenamientos, setEntrenamientos] = useState([]);
+    const [entrenamientos, setEntrenamientos] = useState([]);
 
     useEffect(() => {
         EntrenamientosService.GetEntrenamientosNoFilters()
             .then(({ data }) => {
-                setEntrenamientos(data);
-                // console.log(data);
+                setEntrenamientos(data.entrenamientos);
+                console.log(data.entrenamientos);
             })
             .catch(e => console.error(e));
     }, [setEntrenamientos]);
 
-    return <Context.Provider value={{ Entrenamientos, setEntrenamientos }}>
+    return <Context.Provider value={{ entrenamientos, setEntrenamientos }}>
         {children}
     </Context.Provider>
 }
