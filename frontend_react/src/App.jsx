@@ -10,6 +10,7 @@ import { EntrenamientoContextProvider } from './context/EntrenamietosContext';
 import Header from './components/Shared/Header/Header';
 import Footer from './components/Shared/Footer/Footer';
 import AppRouter from './routes/AppRouter';
+import { EntrenadorContextProvider } from './context/EntrenadoresContext';
 
 function App() {
   return (
@@ -18,9 +19,11 @@ function App() {
         <DeporteContextProvider>
           <PistaContextProvider>
             <EntrenamientoContextProvider>
-              <Header />
-              <AppRouter />
-              <Footer />
+              <EntrenadorContextProvider>
+                <Header />
+                <AppRouter />
+                <Footer />
+              </EntrenadorContextProvider>
             </EntrenamientoContextProvider>
           </PistaContextProvider>
         </DeporteContextProvider>

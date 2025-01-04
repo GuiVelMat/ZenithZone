@@ -7,7 +7,7 @@ export const EntrenamientoContextProvider = ({ children }) => {
     const [Entrenamientos, setEntrenamientos] = useState([]);
 
     useEffect(() => {
-        EntrenamientosService.GetEntrenamientosData()
+        EntrenamientosService.GetEntrenamientosNoFilters()
             .then(({ data }) => {
                 setEntrenamientos(data);
                 // console.log(data);

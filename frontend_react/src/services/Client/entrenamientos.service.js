@@ -33,6 +33,10 @@ export default {
         return Api(secrets.URL_SPRING).get(`entrenamientos?${this.FormatFilters(params)}`);
     },
 
+    GetEntrenamientosNoFilters() {
+        return Api(secrets.URL_SPRING).get(`entrenamientos`);
+    },
+
     GetEntrenamientosData() {
         return Api(secrets.URL_SPRING).get(`entrenamientos/data`);
     },
