@@ -76,11 +76,11 @@ const Graphics = () => {
     }
 
     // Cleanup (limpieza): destruir el gráfico al desmontar el componente
-    return () => {
-      if (radarChart.current.chart) {
-        radarChart.current.chart.destroy();
-      }
-    };
+    // return () => {
+    //   if (radarChart.current.chart) {
+    //     radarChart.current.chart.destroy();
+    //   }
+    // };
   }, []); // Solo se ejecuta una vez al montar el componente
 
   return (
