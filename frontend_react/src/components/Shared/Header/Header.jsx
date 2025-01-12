@@ -34,7 +34,7 @@ const Header = () => {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/auth" className={({ isActive }) => isActive ? activeStyleAuth : inactiveStyleAuth}>
+                                <NavLink to="/login" className={({ isActive }) => isActive ? activeStyleAuth : inactiveStyleAuth}>
                                     Unirse al club
                                 </NavLink>
                             </li>
