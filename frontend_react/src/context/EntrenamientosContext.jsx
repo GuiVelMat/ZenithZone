@@ -10,7 +10,7 @@ export const EntrenamientoContextProvider = ({ children }) => {
         EntrenamientosService.GetEntrenamientosNoFilters()
             .then(({ data }) => {
                 setEntrenamientos(data.entrenamientos);
-                console.log(data.entrenamientos);
+                // console.log(data.entrenamientos);
             })
             .catch(e => console.error(e));
     }, [setEntrenamientos]);

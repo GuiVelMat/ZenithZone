@@ -4,18 +4,18 @@ import PistasService from "../services/Client/pistas.service";
 const Context = React.createContext({})
 
 export const PistaContextProvider = ({ children }) => {
-    const [Pistas, setPistas] = useState([]);
+    const [pistas, setPistas] = useState([]);
 
     useEffect(() => {
         PistasService.GetPistas()
             .then(({ data }) => {
-                setPistas(data);
+                setPistas(data.pistas);
                 // console.log(data);
             })
             .catch(e => console.error(e));
     }, [setPistas]);
 
-    return <Context.Provider value={{ Pistas, setPistas }}>
+    return <Context.Provider value={{ pistas, setPistas }}>
         {children}
     </Context.Provider>
 }
